@@ -1,0 +1,98 @@
+
+.countries {
+    stroke: #f7f7f7;
+    fill: #d9d9d9;
+}
+
+.selected {
+    fill: #737373;
+}
+
+div.dest-option{
+    margin-top: 1em;
+}
+
+div.tooltip {
+    color: #222;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0px 0px 2px 0px #a6a6a6;
+    padding: .2em;
+    text-shadow: #f5f5f5 0 1px 0;
+    opacity: 0.9;
+    position: absolute;
+}
+.hidden {
+    display: none;
+}
+
+header {
+    padding: 0.5em;
+    clear: left;
+    text-align: left;
+    height: 100px;
+}
+
+#details {
+    float: left;
+    width: 200px;
+    padding: 0.5em;
+
+    border-width: 1px;
+    border-color: #d9d9d9;
+    border-right-style: solid;
+}
+
+#plot-selector {
+    float: right;
+    margin-bottom: 5px;
+
+}
+
+.view {
+    padding: 0.5em;
+
+}
+
+.pieChart {
+    margin-top: 1em;
+}
+
+#bar-chart {
+    float: left;
+    width: 500px;
+    margin-right: 20px;
+}
+
+
+
+#links > line {
+    stroke: rgb(216, 216, 216);
+}
+
+#xAxis path,
+#yAxis path {
+    fill: none;
+    stroke: midnightblue;
+}
+
+#xAxis text,
+#yAxis text {
+    font-size: 14px;
+    fill : darkslategray;
+
+}
+
+#Acountries li{
+    font-size: .85em;
+}
+
+.legend {
+    font-size: 12px;
+    font-family: sans-serif;
+}
+.caption {
+    fill: #000;
+    text-anchor: start;
+    font-weight: bold;
+}
