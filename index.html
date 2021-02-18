@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Visualization - Africa: Migrants and Incomes</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css?version=1">
+
+
+</head>
+
+<body>
+<div class="tooltip"></div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">UNIGE</a>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Africa: Migrants and Incomes</a>
+        </li>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">about me</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Name: Matin Keshmiri</a>
+                <a class="dropdown-item" href="mailto:4830630@studenti.unige.it">E-Mail: 4830630@studenti.unige.it</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<br>
+<div class="container-fluid">
+<header>
+</header>
+    <div class="row">
+
+        <div class="col-2">
+            <div id="details" class="view">
+                <span id="year"></span>
+                <span id="destination"></span>
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                <br/>
+                <ul class="list-group" id="Acountries"></ul>
+            </div>
+        </div>
+        <div class="col-10">
+
+            <div class="row">
+                <div class="col-5">
+                    <div id="bar-chart" class="view">
+                        <h3 class="">Asylum Request based on year</h3>
+                        <svg width="500" height="500" id="barChart">
+                            <g id="xAxis"></g>
+                            <g id="yAxis"></g>
+                            <g id="bars"></g>
+                            <g id="legend-bar"></g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="view text-center">
+                        <h4 class="text-center">Migrants Map</h4>
+                        <div id="mydiv">
+                            <div>
+                                <ul class="nav nav-tabs justify-content-center " id="select-year">
+                                    <li class="nav-item">
+                                        <button id="button-tot" class="nav-link active" onclick="updateMap(myworld, 'tot');">2013-2018</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button id="button-2013" class="nav-link" onclick="updateMap(myworld, '2013');">2013</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button id="button-2014" class="nav-link" onclick="updateMap(myworld, '2014');">2014</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button id="button-2015" class="nav-link" onclick="updateMap(myworld, '2015');">2015</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button id="button-2016" class="nav-link" onclick="updateMap(myworld, '2016');">2016</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button id="button-2017" class="nav-link" onclick="updateMap(myworld, '2017');">2017</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button id="button-2018" class="nav-link" onclick="updateMap(myworld, '2018');">2018</button>
+                                    </li>
+                                </ul>
+                                <div class="dest-option text-center container-fluid">
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label" for="radio1">
+                                            <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked onclick="selectDest('EU');">Europe
+                                        </label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label" for="radio2">
+                                            <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2" onclick="selectDest('IT');">Italy
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <svg width="500" height="450">
+                            <g id="map"></g>
+
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <br>
+                <div class="row">
+                    <br>
+                    <div class="col-6">
+                        <div class="row">
+                            <h3 class="">Asylum request based on income</h3>
+                            <div class="col-6">
+                                <svg width="250" height="100" id="pieChart1" class="pieChart"></svg>
+                            </div>
+                            <div class="col-6">
+                                <svg width="250" height="100" id="pieChart2" class="pieChart"></svg>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <table class="table table-dark d-none" id="mytable">
+                                    <thead>
+                                        <tr>
+                                            <th>Country</th>
+                                            <th>Income (PPP)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td id="info-pie1"></td>
+                                            <td id="info-pie2"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="view">
+                            <h4 class="text-center">Incomes Map</h4>
+                            <svg width="900" height="600">
+                                <g id="map2"></g>
+                                <g id="legend-map2"></g>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="d3/d3.js"></script>
+<script src="d3/d3-selection-multi.js"></script>
+<script src="d3/topojson.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
+<script src="script.js?version=1"></script>
+
+
+</body>
+</html>
